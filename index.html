@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estação Café | Produtos Caseiros</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: 'Neue Machina'; src: local('Neue Machina'); font-weight: 400; }
+
+    :root {
+      --creme: #f3e7d7;
+      --creme-claro: #fff6eb;
+      --ferrugem: #a3472f;
+      --ferrugem-escuro: #632c20;
+      --linha: rgba(163, 71, 47, .35);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--creme);
+      color: var(--ferrugem);
+      font-family: 'Neue Machina', Arial, sans-serif;
+    }
+
+    header {
+      height: 104px;
+      background: var(--creme-claro);
+      border-bottom: 1px solid var(--linha);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: var(--ferrugem);
+    }
+
+    .brand-symbol {
+      width: 78px;
+      height: 78px;
+      border: 1.7px solid var(--ferrugem);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      margin-bottom: 3px;
+    }
+
+    .brand strong {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .brand span {
+      font-size: 8px;
+      margin-top: 4px;
+      letter-spacing: .5px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    nav a {
+      color: var(--ferrugem);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn {
+      border: none;
+      background: var(--ferrugem);
+      color: var(--creme-claro);
+      padding: 13px 31px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-family: 'Neue Machina', Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    .hero {
+      height: 430px;
+      background:
+        linear-gradient(90deg, rgba(243,231,215,.98) 0%, rgba(243,231,215,.72) 34%, rgba(243,231,215,.08) 65%),
+        url('/mnt/data/wide_softly_lit_still_life_scene_on_a_warm_beige.png');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 0 7%;
+      position: relative;
+    }
+
+    .arrow {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--ferrugem);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      color: var(--ferrugem);
+      font-size: 27px;
+      background: rgba(243,231,215,.35);
+    }
+
+    .arrow.left { left: 22px; }
+    .arrow.right { right: 22px; }
+
+    .hero-text {
+      width: 470px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1, h2, h3 { font-family: 'Cinzel', serif; }
+
+    h1 {
+      font-size: 48px;
+      line-height: 1.12;
+      margin-bottom: 22px;
+      color: var(--ferrugem);
+    }
+
+    .hero-text p {
+      font-size: 19px;
+      line-height: 1.45;
+      color: var(--ferrugem-escuro);
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      padding: 45px 7% 28px;
+      text-align: center;
+    }
+
+    .title-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 14px;
+    }
+
+    .title-line::before,
+    .title-line::after {
+      content: '';
+      height: 1px;
+      background: var(--ferrugem);
+      width: 220px;
+      opacity: .75;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      letter-spacing: 2px;
+      color: var(--ferrugem);
+      white-space: nowrap;
+    }
+
+    .section-title p {
+      color: var(--ferrugem-escuro);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      padding: 0 7% 48px;
+    }
+
+    .product-card {
+      background: rgba(255, 246, 235, .62);
+      border: 1px solid var(--linha);
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      color: var(--ferrugem);
+    }
+
+    .photo {
+      height: 230px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .cake { background-image: url('https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=900&q=80'); }
+    .paoqueijo { background-image: url('https://images.unsplash.com/photo-1662571936492-9167e7c7640f?auto=format&fit=crop&w=900&q=80'); }
+    .paoitaliano { background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80'); }
+    .doceleite { background-image: url('https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=900&q=80'); }
+
+    .product-content {
+      padding: 24px 22px 25px;
+      min-height: 235px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .product-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .product-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--ferrugem);
+    }
+
+    .product-card p {
+      color: var(--ferrugem-escuro);
+      font-size: 15px;
+      line-height: 1.45;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .small-line {
+      width: 28px;
+      height: 1px;
+      background: var(--ferrugem);
+      margin-bottom: 18px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--ferrugem);
+      border: 1px solid var(--ferrugem);
+      padding: 11px 25px;
+    }
+
+    .history {
+      margin: 0 7%;
+      padding: 33px 0 34px;
+      border-top: 1px solid var(--ferrugem);
+      display: grid;
+      grid-template-columns: 1.05fr 1.05fr .95fr .75fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .train {
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 94px;
+      opacity: .78;
+    }
+
+    .history h2,
+    .history h3 {
+      color: var(--ferrugem);
+      margin-bottom: 10px;
+    }
+
+    .history h2 { font-size: 27px; }
+    .history h3 { font-size: 20px; }
+
+    .history p {
+      color: var(--ferrugem-escuro);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .divider {
+      border-left: 1px solid var(--linha);
+      padding-left: 30px;
+    }
+
+    .stamp {
+      width: 112px;
+      height: 112px;
+      border: 1px solid var(--ferrugem);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: auto;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    footer {
+      background: var(--ferrugem);
+      color: var(--creme-claro);
+      padding: 21px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+
+    footer strong {
+      font-family: 'Cinzel', serif;
+      font-size: 25px;
+    }
+
+    footer span {
+      font-size: 14px;
+    }
+
+    footer .btn-outline {
+      color: var(--creme-claro);
+      border-color: var(--creme-claro);
+    }
+
+    @media (max-width: 1050px) {
+      nav { display: none; }
+      .products { grid-template-columns: repeat(2, 1fr); }
+      .history { grid-template-columns: 1fr; }
+      .divider { border-left: 0; padding-left: 0; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 620px) {
+      header { padding: 0 5%; }
+      .hero { height: 520px; padding: 0 8%; }
+      h1 { font-size: 36px; }
+      .title-line::before,
+      .title-line::after { width: 45px; }
+      .section-title h2 { font-size: 25px; white-space: normal; }
+      .products { grid-template-columns: 1fr; padding: 0 5% 42px; }
+      .arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="brand-symbol">☕</div>
+      <strong>ESTAÇÃO CAFÉ</strong>
+      <span>O CAFÉ DE QUEM FAZ HISTÓRIA</span>
+    </div>
+
+    <nav>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#clube">Clube Estação</a>
+      <a href="#gift">Gift Card</a>
+      <a href="#loja">Encontrar Loja</a>
+      <a href="#app">App Estação</a>
+      <a href="#eventos">Eventos</a>
+      <button class="btn">Comprar</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="arrow left">‹</div>
+      <div class="arrow right">›</div>
+      <div class="hero-text">
+        <h1>Café que conecta histórias</h1>
+        <p>Produtos próprios, cafés tradicionais e receitas artesanais para momentos únicos.</p>
+        <button class="btn">Conheça nossos produtos</button>
+      </div>
+    </section>
+
+    <section id="cardapio">
+      <div class="section-title">
+        <div class="title-line">
+          <h2>Nossos Produtos Caseiros</h2>
+        </div>
+        <p>Feitos com ingredientes selecionados e muito carinho, para você saborear o que é feito de verdade.</p>
+      </div>
+
+      <div class="products">
+        <article class="product-card">
+          <div class="photo cake"></div>
+          <div class="product-content">
+            <div class="product-icon">🍰</div>
+            <h3>Bolos Caseiros</h3>
+            <p>Receitas tradicionais feitas no dia, com sabor que lembra casa de vó.</p>
+            <div class="small-line"></div>
+            <button class="btn btn-outline">Saiba mais</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="photo paoqueijo"></div>
+          <div class="product-content">
+            <div class="product-icon">🧀</div>
+            <h3>Pão de Queijo</h3>
+            <p>Crocante por fora, macio por dentro e feito com queijo de verdade.</p>
+            <div class="small-line"></div>
+            <button class="btn btn-outline">Saiba mais</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="photo paoitaliano"></div>
+          <div class="product-content">
+            <div class="product-icon">🥖</div>
+            <h3>Pão Italiano</h3>
+            <p>Casquinha crocante, miolo leve e fresquinho como tem que ser.</p>
+            <div class="small-line"></div>
+            <button class="btn btn-outline">Saiba mais</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="photo doceleite"></div>
+          <div class="product-content">
+            <div class="product-icon">🍯</div>
+            <h3>Doce de Leite</h3>
+            <p>Cremoso e irresistível, feito com leite selecionado e receita especial.</p>
+            <div class="small-line"></div>
+            <button class="btn btn-outline">Saiba mais</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="history">
+      <div class="train">🚂</div>
+
+      <div>
+        <h2>Nossa História</h2>
+        <p>A Estação Café nasceu em São Bernardo do Campo com o propósito de valorizar o que é feito com dedicação, tempo e paixão. Mais que café, entregamos experiências que conectam pessoas e constroem histórias.</p>
+        <br>
+        <button class="btn btn-outline">Conheça mais</button>
+      </div>
+
+      <div class="divider">
+        <h3>Grãos Selecionados</h3>
+        <p>Sustentabilidade e qualidade em cada etapa do nosso processo.</p>
+      </div>
+
+      <div class="stamp">Feito com amor<br>para você</div>
+    </section>
+  </main>
+
+  <footer id="clube">
+    <strong>Faça parte do Clube Estação</strong>
+    <span>Ofertas exclusivas, descontos e benefícios para quem ama café.</span>
+    <button class="btn btn-outline">Saiba mais</button>
+  </footer>
+</body>
+</html>
