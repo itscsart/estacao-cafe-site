@@ -3,278 +3,323 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Estação Café | Produtos Caseiros</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
-  <style>
-    @font-face { font-family: 'Neue Machina'; src: local('Neue Machina'); font-weight: 400; }
+  <title>Estação Café</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
 
+  <style>
     :root {
       --creme: #f3e7d7;
-      --creme-claro: #fff6eb;
+      --creme-claro: #fff4e7;
       --ferrugem: #a3472f;
-      --ferrugem-escuro: #632c20;
+      --ferrugem-escuro: #572316;
       --linha: rgba(163, 71, 47, .35);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       background: var(--creme);
       color: var(--ferrugem);
-      font-family: 'Neue Machina', Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1, h2, h3, .logo-title, .footer-title {
+      font-family: 'Cinzel', serif;
     }
 
     header {
-      height: 104px;
+      height: 128px;
       background: var(--creme-claro);
+      border-top: 4px solid var(--ferrugem-escuro);
       border-bottom: 1px solid var(--linha);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 7%;
+      padding: 0 7.5%;
     }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .logo-area {
+      width: 170px;
       text-align: center;
       color: var(--ferrugem);
     }
 
-    .brand-symbol {
-      width: 78px;
-      height: 78px;
-      border: 1.7px solid var(--ferrugem);
+    .logo-mark {
+      width: 86px;
+      height: 86px;
+      border: 1.5px solid var(--ferrugem);
       border-radius: 50%;
+      margin: 0 auto 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 34px;
-      margin-bottom: 3px;
+      font-size: 36px;
+      position: relative;
     }
 
-    .brand strong {
-      font-family: 'Cinzel', serif;
-      font-size: 18px;
+    .logo-mark::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid var(--ferrugem);
+      border-radius: 50%;
+      border-bottom-color: transparent;
+    }
+
+    .logo-title {
+      display: block;
+      font-size: 20px;
       line-height: 1;
+      font-weight: 700;
     }
 
-    .brand span {
+    .logo-subtitle {
+      display: block;
       font-size: 8px;
       margin-top: 4px;
-      letter-spacing: .5px;
+      text-transform: uppercase;
     }
 
     nav {
       display: flex;
       align-items: center;
       gap: 34px;
-      text-transform: uppercase;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
     nav a {
       color: var(--ferrugem);
       text-decoration: none;
-      white-space: nowrap;
+      transition: opacity .25s ease;
+    }
+
+    nav a:hover {
+      opacity: .65;
     }
 
     .btn {
-      border: none;
       background: var(--ferrugem);
-      color: var(--creme-claro);
-      padding: 13px 31px;
+      color: #fff4e7;
+      border: none;
       border-radius: 5px;
+      padding: 13px 30px;
       text-transform: uppercase;
       font-weight: 700;
-      font-family: 'Neue Machina', Arial, sans-serif;
       cursor: pointer;
+      transition: transform .25s ease, background .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #7d3323;
     }
 
     .hero {
-      height: 430px;
+      min-height: 460px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 7.5%;
       background:
-        linear-gradient(90deg, rgba(243,231,215,.98) 0%, rgba(243,231,215,.72) 34%, rgba(243,231,215,.08) 65%),
+        linear-gradient(90deg, rgba(243, 231, 215, .98) 0%, rgba(243, 231, 215, .72) 35%, rgba(243, 231, 215, .05) 68%),
         url('./assets/hero.jpg');
       background-size: cover;
       background-position: center;
-      display: flex;
-      align-items: center;
-      padding: 0 7%;
-      position: relative;
+      overflow: hidden;
+      animation: heroMove 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroMove {
+      from { background-size: 103%; }
+      to { background-size: 109%; }
+    }
+
+    .hero-text {
+      max-width: 520px;
+      animation: fadeUp .9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      line-height: 1.12;
+      color: var(--ferrugem);
+      margin-bottom: 22px;
+      letter-spacing: .5px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      line-height: 1.5;
+      color: var(--ferrugem-escuro);
+      margin-bottom: 28px;
+      max-width: 390px;
     }
 
     .arrow {
-      width: 44px;
-      height: 44px;
+      width: 45px;
+      height: 45px;
       border: 1px solid var(--ferrugem);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 28px;
       color: var(--ferrugem);
-      font-size: 27px;
-      background: rgba(243,231,215,.35);
+      background: rgba(243, 231, 215, .28);
     }
 
-    .arrow.left { left: 22px; }
-    .arrow.right { right: 22px; }
-
-    .hero-text {
-      width: 470px;
-      position: relative;
-      z-index: 2;
-    }
-
-    h1, h2, h3 { font-family: 'Cinzel', serif; }
-
-    h1 {
-      font-size: 48px;
-      line-height: 1.12;
-      margin-bottom: 22px;
-      color: var(--ferrugem);
-    }
-
-    .hero-text p {
-      font-size: 19px;
-      line-height: 1.45;
-      color: var(--ferrugem-escuro);
-      margin-bottom: 25px;
-    }
+    .arrow.left { left: 26px; }
+    .arrow.right { right: 26px; }
 
     .section-title {
-      padding: 45px 7% 28px;
+      padding: 54px 7.5% 30px;
       text-align: center;
     }
 
-    .title-line {
+    .title-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 25px;
-      margin-bottom: 14px;
+      gap: 28px;
+      margin-bottom: 15px;
     }
 
-    .title-line::before,
-    .title-line::after {
-      content: '';
+    .title-row::before,
+    .title-row::after {
+      content: "";
+      width: 215px;
       height: 1px;
       background: var(--ferrugem);
-      width: 220px;
-      opacity: .75;
+      opacity: .7;
     }
 
     .section-title h2 {
-      font-size: 32px;
+      font-size: 34px;
       letter-spacing: 2px;
       color: var(--ferrugem);
       white-space: nowrap;
     }
 
     .section-title p {
-      color: var(--ferrugem-escuro);
       font-size: 16px;
-      line-height: 1.6;
+      color: var(--ferrugem-escuro);
     }
 
     .products {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 22px;
-      padding: 0 7% 48px;
+      padding: 0 7.5% 48px;
     }
 
     .product-card {
-      background: rgba(255, 246, 235, .62);
       border: 1px solid var(--linha);
       border-radius: 8px;
+      background: rgba(255, 244, 231, .62);
       overflow: hidden;
       text-align: center;
-      color: var(--ferrugem);
+      transition: transform .35s ease, box-shadow .35s ease;
     }
 
-    .photo {
-      height: 230px;
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(87, 35, 22, .16);
+    }
+
+    .product-image {
+      height: 260px;
       background-size: cover;
       background-position: center;
     }
 
-    .cake { background-image: url('https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=900&q=80'); }
-    .paoqueijo { background-image: url('https://images.unsplash.com/photo-1662571936492-9167e7c7640f?auto=format&fit=crop&w=900&q=80'); }
-    .paoitaliano { background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80'); }
-    .doceleite { background-image: url('https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=900&q=80'); }
+    .bolo { background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80'); }
+    .pao-queijo { background-image: url('https://images.unsplash.com/photo-1606851682837-019baf2f2905?auto=format&fit=crop&w=900&q=80'); }
+    .pao-italiano { background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80'); }
+    .doce-leite { background-image: url('https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=900&q=80'); }
 
-    .product-content {
-      padding: 24px 22px 25px;
-      min-height: 235px;
+    .product-info {
+      min-height: 245px;
+      padding: 25px 22px 26px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .product-icon {
-      font-size: 36px;
-      margin-bottom: 12px;
+      font-size: 38px;
+      margin-bottom: 14px;
     }
 
     .product-card h3 {
-      font-size: 20px;
-      margin-bottom: 12px;
       color: var(--ferrugem);
+      font-size: 21px;
+      margin-bottom: 12px;
     }
 
     .product-card p {
       color: var(--ferrugem-escuro);
       font-size: 15px;
       line-height: 1.45;
-      margin-bottom: 20px;
       flex: 1;
+      max-width: 230px;
     }
 
     .small-line {
       width: 28px;
       height: 1px;
       background: var(--ferrugem);
-      margin-bottom: 18px;
+      margin: 18px 0;
     }
 
     .btn-outline {
       background: transparent;
       color: var(--ferrugem);
       border: 1px solid var(--ferrugem);
-      padding: 11px 25px;
+      padding: 11px 24px;
     }
 
     .history {
-      margin: 0 7%;
-      padding: 33px 0 34px;
+      margin: 0 7.5%;
+      padding: 34px 0 36px;
       border-top: 1px solid var(--ferrugem);
       display: grid;
-      grid-template-columns: 1.05fr 1.05fr .95fr .75fr;
-      gap: 30px;
+      grid-template-columns: 1.1fr 1.1fr 1fr .8fr;
+      gap: 34px;
       align-items: center;
     }
 
-    .train {
-      min-height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 94px;
-      opacity: .78;
+    .train-art {
+      color: var(--ferrugem);
+      font-size: 96px;
+      text-align: center;
+      opacity: .85;
     }
 
-    .history h2,
-    .history h3 {
+    .history h2 {
+      font-size: 28px;
       color: var(--ferrugem);
       margin-bottom: 10px;
     }
 
-    .history h2 { font-size: 27px; }
-    .history h3 { font-size: 20px; }
+    .history h3 {
+      font-size: 21px;
+      color: var(--ferrugem);
+      margin-bottom: 10px;
+    }
 
     .history p {
       color: var(--ferrugem-escuro);
@@ -282,76 +327,81 @@
       line-height: 1.55;
     }
 
-    .divider {
+    .history-divider {
       border-left: 1px solid var(--linha);
-      padding-left: 30px;
+      padding-left: 34px;
     }
 
     .stamp {
-      width: 112px;
-      height: 112px;
+      width: 118px;
+      height: 118px;
       border: 1px solid var(--ferrugem);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
       margin: auto;
+      text-align: center;
       font-family: 'Cinzel', serif;
       font-size: 14px;
       line-height: 1.35;
+      color: var(--ferrugem);
+      text-transform: uppercase;
     }
 
     footer {
-      background: var(--ferrugem);
+      background: linear-gradient(90deg, #9d3f28, #b84b2f);
       color: var(--creme-claro);
-      padding: 21px 7%;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 36px;
+      gap: 38px;
+      padding: 20px 7.5%;
     }
 
-    footer strong {
-      font-family: 'Cinzel', serif;
+    .footer-title {
       font-size: 25px;
+      font-weight: 700;
     }
 
-    footer span {
+    footer p {
       font-size: 14px;
     }
 
     footer .btn-outline {
-      color: var(--creme-claro);
       border-color: var(--creme-claro);
+      color: var(--creme-claro);
     }
 
-    @media (max-width: 1050px) {
+    @media (max-width: 1100px) {
       nav { display: none; }
       .products { grid-template-columns: repeat(2, 1fr); }
       .history { grid-template-columns: 1fr; }
-      .divider { border-left: 0; padding-left: 0; }
-      footer { flex-direction: column; text-align: center; }
+      .history-divider { border-left: none; padding-left: 0; }
     }
 
-    @media (max-width: 620px) {
-      header { padding: 0 5%; }
-      .hero { height: 520px; padding: 0 8%; }
-      h1 { font-size: 36px; }
-      .title-line::before,
-      .title-line::after { width: 45px; }
+    @media (max-width: 650px) {
+      header { height: 105px; padding: 0 5%; }
+      .logo-mark { width: 64px; height: 64px; font-size: 27px; }
+      .logo-title { font-size: 16px; }
+      .hero { min-height: 500px; padding: 0 8%; background-position: center right; }
+      .hero h1 { font-size: 36px; }
+      .hero p { font-size: 17px; }
+      .arrow { display: none; }
+      .title-row::before, .title-row::after { width: 48px; }
       .section-title h2 { font-size: 25px; white-space: normal; }
       .products { grid-template-columns: 1fr; padding: 0 5% 42px; }
-      .arrow { display: none; }
+      footer { flex-direction: column; text-align: center; gap: 15px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="brand">
-      <div class="brand-symbol">☕</div>
-      <strong>ESTAÇÃO CAFÉ</strong>
-      <span>O CAFÉ DE QUEM FAZ HISTÓRIA</span>
+    <div class="logo-area">
+      <div class="logo-mark">☕</div>
+      <span class="logo-title">ESTAÇÃO CAFÉ</span>
+      <span class="logo-subtitle">O café de quem faz história</span>
     </div>
 
     <nav>
@@ -371,14 +421,14 @@
       <div class="arrow right">›</div>
       <div class="hero-text">
         <h1>Café que conecta histórias</h1>
-        <p>Produtos próprios, cafés tradicionais e receitas artesanais para momentos únicos.</p>
+        <p>Grãos selecionados e produtos caseiros preparados para momentos únicos.</p>
         <button class="btn">Conheça nossos produtos</button>
       </div>
     </section>
 
     <section id="cardapio">
       <div class="section-title">
-        <div class="title-line">
+        <div class="title-row">
           <h2>Nossos Produtos Caseiros</h2>
         </div>
         <p>Feitos com ingredientes selecionados e muito carinho, para você saborear o que é feito de verdade.</p>
@@ -386,8 +436,8 @@
 
       <div class="products">
         <article class="product-card">
-          <div class="photo cake"></div>
-          <div class="product-content">
+          <div class="product-image bolo"></div>
+          <div class="product-info">
             <div class="product-icon">🍰</div>
             <h3>Bolos Caseiros</h3>
             <p>Receitas tradicionais feitas no dia, com sabor que lembra casa de vó.</p>
@@ -397,8 +447,8 @@
         </article>
 
         <article class="product-card">
-          <div class="photo paoqueijo"></div>
-          <div class="product-content">
+          <div class="product-image pao-queijo"></div>
+          <div class="product-info">
             <div class="product-icon">🧀</div>
             <h3>Pão de Queijo</h3>
             <p>Crocante por fora, macio por dentro e feito com queijo de verdade.</p>
@@ -408,8 +458,8 @@
         </article>
 
         <article class="product-card">
-          <div class="photo paoitaliano"></div>
-          <div class="product-content">
+          <div class="product-image pao-italiano"></div>
+          <div class="product-info">
             <div class="product-icon">🥖</div>
             <h3>Pão Italiano</h3>
             <p>Casquinha crocante, miolo leve e fresquinho como tem que ser.</p>
@@ -419,8 +469,8 @@
         </article>
 
         <article class="product-card">
-          <div class="photo doceleite"></div>
-          <div class="product-content">
+          <div class="product-image doce-leite"></div>
+          <div class="product-info">
             <div class="product-icon">🍯</div>
             <h3>Doce de Leite</h3>
             <p>Cremoso e irresistível, feito com leite selecionado e receita especial.</p>
@@ -432,7 +482,7 @@
     </section>
 
     <section class="history">
-      <div class="train">🚂</div>
+      <div class="train-art">🚂</div>
 
       <div>
         <h2>Nossa História</h2>
@@ -441,7 +491,7 @@
         <button class="btn btn-outline">Conheça mais</button>
       </div>
 
-      <div class="divider">
+      <div class="history-divider">
         <h3>Grãos Selecionados</h3>
         <p>Sustentabilidade e qualidade em cada etapa do nosso processo.</p>
       </div>
@@ -451,8 +501,8 @@
   </main>
 
   <footer id="clube">
-    <strong>Faça parte do Clube Estação</strong>
-    <span>Ofertas exclusivas, descontos e benefícios para quem ama café.</span>
+    <div class="footer-title">Faça parte do Clube Estação</div>
+    <p>Ofertas exclusivas, descontos e benefícios para quem ama café.</p>
     <button class="btn btn-outline">Saiba mais</button>
   </footer>
 </body>
